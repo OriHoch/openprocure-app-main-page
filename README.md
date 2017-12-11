@@ -1,5 +1,8 @@
-## Budget Key Sample App
+## Open Procurement (AKA GovBuy) main page app
 
-This is the sample app for the Budget Key project.
+#### Development Quickstart
 
-To read on how it's used, please take a look [here](https://github.com/OpenBudget/BudgetKey/blob/master/documentation/FrontEndDevelopment.md).
+```
+yarn install
+yarn run dist-serve
+```

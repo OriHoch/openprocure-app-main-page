@@ -21,6 +21,7 @@ import { DOCUMENT } from '@angular/platform-browser';
 
           <div class="search-wrapper">
             <form ngNoForm method="get" [action]="searchUrl">
+              <input type="hidden" name="theme" value="govbuy"/>
               <input type="text" placeholder="חפשו הכל.. רכש, רכש, רכש, רכש, או כל דבר אחר העולה על דעתכם.."
                 [(ngModel)]="searchTerm" [ngModelOptions]="{standalone: true}">
               <button type="submit"></button>
