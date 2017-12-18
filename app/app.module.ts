@@ -14,7 +14,7 @@ import {
   HeroComponent
 } from './components';
 
-import { BudgetKeyMainPageService, UtilsService, ScrollyService } from './services';
+import { BudgetKeyMainPageService, UtilsService, ScrollyService, AuthService } from './services';
 
 import { KeysPipe } from './pipes';
 
@@ -50,7 +50,8 @@ mapboxgl.accessToken = MAPBOXGL_ACCESS_TOKEN;
     UtilsService,
     {provide: MAPBOXGL_TOKEN, useValue: mapboxgl},
     // TODO: get the theme from OpenProcure repo
-    {provide: THEME_TOKEN, useValue: {"siteName": "רכש פתוח"}}
+    {provide: THEME_TOKEN, useValue: {"siteName": "רכש פתוח"}},
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })

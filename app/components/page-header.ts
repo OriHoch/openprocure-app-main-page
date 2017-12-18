@@ -1,5 +1,6 @@
 import { Component, Inject, HostListener } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
+import { AuthService } from '../services';
 
 @Component({
   selector: 'budgetkey-main-page-header',
@@ -28,7 +29,9 @@ import { DOCUMENT } from '@angular/platform-browser';
             </form>
           </div>  
         </div>
-        <div class="col-xs-2"></div>
+        <div class="col-xs-2 text-left">
+          <a class="menu-item" (click)="login($event)">כניסה למערכת</a>
+        </div>
       </div>
     </div>
   `
@@ -37,7 +40,10 @@ export class HeaderComponent {
   searchTerm: string = '';
   private isCollapsed: boolean = false;
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private auth: AuthService
+  ) { }
 
   @HostListener('window:scroll')
   onWindowScroll() {
@@ -48,5 +54,17 @@ export class HeaderComponent {
   get searchUrl() {
     return 'http://next.obudget.org/app/search/#/search?term=' +
       encodeURIComponent(this.searchTerm);
+  }
+
+  login($event: any) {
+    $event.stopPropagation();
+    $event.preventDefault();
+    this.auth.check(document.location.href).then((response: any) => {
+      if (response.authenticated) {
+        alert('logged in!');
+      } else {
+        alert('not logged in!');
+      }
+    })
   }
 }
