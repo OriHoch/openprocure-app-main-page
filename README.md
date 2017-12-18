@@ -41,7 +41,7 @@ openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=US/ST=Denial/
 Start the docker compose environment
 
 ```
-docker-compose up
+docker-compose up --build
 ```
 
 * App is available at https://localhost:8001/

@@ -1,4 +1,4 @@
-import { Component, Inject, HostListener } from '@angular/core';
+import { Component, Inject, HostListener, Input } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { AuthService } from '../services';
 
@@ -30,7 +30,8 @@ import { AuthService } from '../services';
           </div>  
         </div>
         <div class="col-xs-2 text-left">
-          <a class="menu-item" (click)="login($event)">כניסה למערכת</a>
+          <a *ngIf="!user.authenticated" class="menu-item" (click)="login($event, user.providers)">כניסה למערכת</a>
+          <span *ngIf="user" class="menu-item">שלום משתמש</span>
         </div>
       </div>
     </div>
@@ -39,6 +40,7 @@ import { AuthService } from '../services';
 export class HeaderComponent {
   searchTerm: string = '';
   private isCollapsed: boolean = false;
+  @Input() user: any;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,

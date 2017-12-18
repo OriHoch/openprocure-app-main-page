@@ -12,3 +12,5 @@ _test-output
 _temp
 dist/
 secret*
+*.crt
+*.key
