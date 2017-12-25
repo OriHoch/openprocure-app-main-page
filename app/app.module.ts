@@ -20,6 +20,8 @@ import { KeysPipe } from './pipes';
 
 import { MAPBOXGL_TOKEN, MAPBOXGL_ACCESS_TOKEN } from './constants';
 import {MushonkeyModule} from "mushonkey";
+import {AuthModule} from 'budgetkey-ng2-auth';
+import {provideAuthService, AuthService} from 'budgetkey-ng2-auth/lib/services'
 
 /* global mapboxgl */
 declare const mapboxgl: any;
@@ -32,7 +34,8 @@ mapboxgl.accessToken = MAPBOXGL_ACCESS_TOKEN;
     HttpModule,
     FormsModule,
     BudgetKeyCommonModule,
-    MushonkeyModule
+    MushonkeyModule,
+    AuthModule
   ],
   declarations: [
     KeysPipe,
@@ -50,7 +53,8 @@ mapboxgl.accessToken = MAPBOXGL_ACCESS_TOKEN;
     UtilsService,
     {provide: MAPBOXGL_TOKEN, useValue: mapboxgl},
     // TODO: get the theme from OpenProcure repo
-    {provide: THEME_TOKEN, useValue: {"siteName": "רכש פתוח"}}
+    {provide: THEME_TOKEN, useValue: {"siteName": "רכש פתוח"}},
+    provideAuthService('https://localhost:8001')
   ],
   bootstrap: [ AppComponent ]
 })
