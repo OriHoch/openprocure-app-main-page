@@ -1,6 +1,2 @@
 build-cache/*
 node_modules
-*.crt
-*.key
-secret*
-dist

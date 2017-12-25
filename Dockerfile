@@ -1,14 +1,8 @@
 FROM node:8-alpine
 
-RUN apk add --update git
-
-COPY package.json package-lock.json /app/
-
-RUN cd /app/ && npm install --dev
-
 COPY . /app/
-
-RUN cd /app/ && npm run dist
+RUN apk add --update git
+RUN cd /app/ && npm install --dev && npm run dist
 
 EXPOSE 8000
 

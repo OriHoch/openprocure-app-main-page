@@ -1,7 +1,6 @@
-import {Component, ViewChild, Inject } from '@angular/core';
-import {AuthService, BudgetKeyMainPageService} from './services';
+import {Component, ViewChild} from '@angular/core';
+import { BudgetKeyMainPageService } from './services';
 import {ScrollyService} from "./services/scrolly";
-import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'my-app',
@@ -9,7 +8,7 @@ import { DOCUMENT } from '@angular/platform-browser';
       <budgetkey-container>
         <div class="container-fluid scroll" style="position: relative">
             <div class="non-sticky">
-              <budgetkey-main-page-header [user]="user"></budgetkey-main-page-header>
+              <budgetkey-main-page-header></budgetkey-main-page-header>
               <div class="text-center">
                 <div class="description">
                    <span>
@@ -34,12 +33,9 @@ export class AppComponent {
   private incomeCategories: any[];
   private totalAmount: number = 0;
   private year: number;
-  private user: any;
 
   constructor(private mainPage: BudgetKeyMainPageService,
-              private scrolly: ScrollyService,
-              @Inject(DOCUMENT) private document: Document,
-              private auth: AuthService) {
+              private scrolly: ScrollyService) {
     this.mainPage.getBubblesData().then((bubbles) => {
       this.year = bubbles.year;
       this.funcCategories = bubbles.func;
@@ -50,8 +46,6 @@ export class AppComponent {
         this.totalAmount += category.amount;
       });
     });
-
-    this.auth.check(document.location.href).then((response: any) => {this.user = response;})
   }
 
   ngAfterViewInit() {

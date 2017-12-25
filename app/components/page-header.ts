@@ -1,6 +1,5 @@
-import { Component, Inject, HostListener, Input } from '@angular/core';
+import { Component, Inject, HostListener } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
-import { AuthService } from '../services';
 
 @Component({
   selector: 'budgetkey-main-page-header',
@@ -29,9 +28,8 @@ import { AuthService } from '../services';
             </form>
           </div>  
         </div>
-        <div class="col-xs-2 text-left">
-          <a *ngIf="!user.authenticated" class="menu-item" (click)="login($event, user.providers)">כניסה למערכת</a>
-          <span *ngIf="user" class="menu-item">שלום משתמש</span>
+        <div #budgetkeyng2authWrapper class="col-xs-2 text-left">
+          <budgetkey-ng2-auth #budgetkeyng2auth></budgetkey-ng2-auth>
         </div>
       </div>
     </div>
@@ -40,12 +38,8 @@ import { AuthService } from '../services';
 export class HeaderComponent {
   searchTerm: string = '';
   private isCollapsed: boolean = false;
-  @Input() user: any;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private auth: AuthService
-  ) { }
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   @HostListener('window:scroll')
   onWindowScroll() {
@@ -56,17 +50,5 @@ export class HeaderComponent {
   get searchUrl() {
     return 'http://next.obudget.org/app/search/#/search?term=' +
       encodeURIComponent(this.searchTerm);
-  }
-
-  login($event: any) {
-    $event.stopPropagation();
-    $event.preventDefault();
-    this.auth.check(document.location.href).then((response: any) => {
-      if (response.authenticated) {
-        alert('logged in!');
-      } else {
-        alert('not logged in!');
-      }
-    })
   }
 }
