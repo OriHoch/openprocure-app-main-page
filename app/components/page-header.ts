@@ -28,7 +28,9 @@ import { DOCUMENT } from '@angular/platform-browser';
             </form>
           </div>  
         </div>
-        <div class="col-xs-2"></div>
+        <div class="col-xs-2 text-left">
+          <budgetkey-ng2-auth></budgetkey-ng2-auth>
+        </div>
       </div>
     </div>
   `
