@@ -56,7 +56,7 @@ declare const authServerUrl: any;
     {provide: MAPBOXGL_TOKEN, useValue: mapboxgl},
     // TODO: get the theme from OpenProcure repo
     {provide: THEME_TOKEN, useValue: {"siteName": "רכש פתוח"}},
-    provideAuthService(authServerUrl ? authServerUrl : 'https://next.obudget.org/auth')
+    provideAuthService(authServerUrl ? authServerUrl : 'https://next.obudget.org')
   ],
   bootstrap: [ AppComponent ]
 })
