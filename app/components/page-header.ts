@@ -28,8 +28,8 @@ import { DOCUMENT } from '@angular/platform-browser';
             </form>
           </div>  
         </div>
-        <div #budgetkeyng2authWrapper class="col-xs-2 text-left">
-          <budgetkey-ng2-auth #budgetkeyng2auth></budgetkey-ng2-auth>
+        <div class="col-xs-2 text-left">
+          <budgetkey-ng2-auth></budgetkey-ng2-auth>
         </div>
       </div>
     </div>
