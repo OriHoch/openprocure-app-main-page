@@ -7,7 +7,7 @@
     "npm": "^5.2.0"
   },
   "scripts": {
-    "start": "http-server ./dist -p 8000",
+    "start": "node index.js",
     "pree2e": "./node_modules/protractor/bin/webdriver-manager update",
     "e2e": "npm run dist && tsc && concurrently \"npm start -- -s\" \"protractor protractor.config.js\" --kill-others --success first && gulp clean:ts",
     "lint": "tslint ./app/**/*.ts ./e2e/**/*.ts -t verbose",
@@ -38,10 +38,12 @@
     "d3-transition": "^1.1.1",
     "lodash": "^4.17.2",
     "mushonkey": "0.0.16",
+    "nunjucks": "^3.0.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.4.0",
     "scrollama": "https://github.com/akariv/scrollama/tarball/master",
     "systemjs": "0.19.40",
+    "urlencode": "^1.1.0",
     "zone.js": "^0.6.26"
   },
   "devDependencies": {

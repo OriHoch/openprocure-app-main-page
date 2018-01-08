@@ -28,6 +28,8 @@ declare const mapboxgl: any;
 
 mapboxgl.accessToken = MAPBOXGL_ACCESS_TOKEN;
 
+declare const authServerUrl: any;
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ mapboxgl.accessToken = MAPBOXGL_ACCESS_TOKEN;
     {provide: MAPBOXGL_TOKEN, useValue: mapboxgl},
     // TODO: get the theme from OpenProcure repo
     {provide: THEME_TOKEN, useValue: {"siteName": "רכש פתוח"}},
-    provideAuthService('https://localhost:8001')
+    provideAuthService(authServerUrl ? authServerUrl : 'https://next.obudget.org/auth')
   ],
   bootstrap: [ AppComponent ]
 })
