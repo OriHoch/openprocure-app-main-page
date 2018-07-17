@@ -5,10 +5,8 @@ var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 
 gulp.task('default', function(done) {
-  runSequence('clean', 'assets', done);
+  runSequence('clean', 'assets:vendor', 'assets:app', done);
 });
-
-gulp.task('assets', ['assets:app', 'assets:vendor']);
 
 gulp.task('assets:app', function() {
   return gulp.src([
