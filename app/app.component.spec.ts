@@ -9,8 +9,6 @@ import { BudgetKeyCommonModule } from 'budgetkey-ng2-components';
 import { AppComponent } from './app.component';
 import { AdamkeyModule } from 'adamkey';
 
-window['prefetchedData'] = require('../data/ngos-main-page.json')['value'];
-
 describe('AppComponent', function () {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
