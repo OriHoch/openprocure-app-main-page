@@ -1,4 +1,5 @@
 import {Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
+import { ModalComponent } from './components';
 
 @Component({
   selector: 'my-app',
@@ -47,7 +48,7 @@ import {Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
           </div>
         </div>
         <div class="tab-contents-container">
-          <div class="card-row" *ngFor='let row of SECTIONS[active]'>
+          <div class="card-row" *ngFor='let row of sections[active]'>
             <div class='card-row-header'>{{ row.title }}</div>
             <div class='card-row-cards'>
               <div class='card' *ngFor='let card of row.cards'>
@@ -67,6 +68,7 @@ import {Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
         </div>
         <div class="disclaimer">
         </div>
+        <modal [title]='modal.title' [text]='modal.text' [visible]='modal.visible'></modal>
       </budgetkey-container>
   `,
 })
@@ -77,14 +79,15 @@ export class AppComponent {
 
   private active: string = 'supplier';
   private data: any = window['prefetchedData'];
-  private districts: any[] = [];
-  private SECTIONS = require("json-loader!yaml-loader!./configuration.yaml");
+  private modal: any = {title: 'Hi', message: 'Yo'};
+  private configuration = require("json-loader!yaml-loader!./configuration.yaml");
+  private sections = this.configuration.cards;
+  private modals = this.configuration.modals;
 
   constructor() {
   }
 
   ngOnInit() {
-    console.log('SSS', this.SECTIONS);
   }
 
   action(todo: string) {
@@ -92,6 +95,15 @@ export class AppComponent {
       let href = todo.slice(5);
       href = 'https://next.obudget.org' + href;
       window.location.href = href;
+    } else {
+      console.log(todo);
+      let modal_id = todo.slice(6);
+      let modal: any = this.modals[modal_id];
+      if (modal) {
+        this.modal.visible = true;
+        this.modal.title = modal.title;
+        this.modal.text = modal.text;
+      }
     }
   }
 

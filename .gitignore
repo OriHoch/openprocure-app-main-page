@@ -12,3 +12,5 @@ _test-output
 _temp
 dist/
 build-cache/*
+theme.govbuy.json
+
