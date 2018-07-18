@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { BudgetKeyCommonModule } from 'budgetkey-ng2-components';
 import { AppComponent } from './app.component';
 import { AdamkeyModule } from 'adamkey';
+import { ModalComponent } from './components';
 
 describe('AppComponent', function () {
   let comp: AppComponent;
@@ -23,6 +24,7 @@ describe('AppComponent', function () {
       ],
       declarations: [
         AppComponent,
+        ModalComponent,
       ],
       providers: [
       ]
