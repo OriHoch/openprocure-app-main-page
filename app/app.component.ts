@@ -68,7 +68,11 @@ import { ModalComponent } from './components';
         </div>
         <div class="disclaimer">
         </div>
-        <modal [title]='modal.title' [text]='modal.text' [visible]='modal.visible'></modal>
+        <ng-container *ngIf='modal.visible'>
+          <modal [title]='modal.title' [text]='modal.text' 
+                 (close)='modal.visible = false'
+          ></modal>
+        </ng-container>
       </budgetkey-container>
   `,
 })
@@ -91,12 +95,13 @@ export class AppComponent {
   }
 
   action(todo: string) {
-    if (todo.indexOf('href') == 0) {
+    if (todo.indexOf('href') === 0) {
       let href = todo.slice(5);
       href = 'https://next.obudget.org' + href;
       window.location.href = href;
+    } else if (todo.indexOf('search') === 0) {
+      window.scrollTo({top: 0});
     } else {
-      console.log(todo);
       let modal_id = todo.slice(6);
       let modal: any = this.modals[modal_id];
       if (modal) {
