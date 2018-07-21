@@ -13,23 +13,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
                      <p [innerHtml]="text"></p>
                    </div>
                  </div>
-              </div>`,
-
-    styles: [
-      `
-.modal-dialog {
-  position: fixed;
-  z-index: 100;
-  margin: 20px;
-  width: calc(100% - 42px);
-  top: 0;
-  left: 50%;
-  margin-left: calc(20px - 50%);
-  background: white;
-  border: 1px solid black;
-}
-        `
-    ]
+              </div>`
 })
 export class ModalComponent {
   @Input() title: string;
