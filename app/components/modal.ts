@@ -10,7 +10,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
                      <h4 class="modal-title">{{title}}</h4>
                    </div>
                    <div class="modal-body">
-                     <p>{{text}}</p>
+                     <p [innerHtml]="text"></p>
                    </div>
                  </div>
               </div>`,
