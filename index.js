@@ -33,7 +33,7 @@ app.get(basePath + '*', function(req, res) {
     }
   }
 
-  let doc_id = 'reports/ngos-main-page';
+  let doc_id = 'reports/open-procure-main-page';
   request({
     url: 'https://next.obudget.org/get/' + urlencode(doc_id),
     json: true

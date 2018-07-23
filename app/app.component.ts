@@ -11,12 +11,16 @@ import { ModalComponent } from './components';
           <div class='layer'></div>
           <div class="main-text layer">
             <h1>
-              ב-2017 רכשה המדינה סחורות ושירותים בכ-2.7 מיליארד ₪
-              <br/>
-              23 משרדי ממשלה פרסמו 482 מכרזים חדשים ב-298 נושאים שונים
-              <br/>
-              2,231 ספקים עובדים עם הממשלה
-              89 מתוכם הצטרפו בשנה האחרונה
+            ב-{{data.year}} רכשה המדינה סחורות ושירותים בכ-{{(data.total_amount/1000000000) | number:'1.0-2' }} מיליארד ₪. <br/>
+            פעולות הרכש כללו {{data.num_central | number}}
+            <span [bkTooltip]='tooltips.central'>מכרזים מרכזיים</span>            
+            של מנהל הרכש
+            ו-{{data.num_office | number}} 
+            <span [bkTooltip]='tooltips.office'>מכרזים משרדיים</span>
+            של {{data.num_office_publishers | number}} משרדים.
+            בנוסף, אושרו {{data.num_exemptions | number}} פעולות רכש 
+            <span [bkTooltip]='tooltips.exemptions'>בפטור ממכרז</span>
+             בשנה זו.
             </h1>
             <budgetkey-search-bar [searchTerm]="''"
                                   [instantSearch]="false"
@@ -82,11 +86,12 @@ export class AppComponent {
   @ViewChild('searchGuide') searchGuide: ElementRef;
 
   private active: string = 'supplier';
-  private data: any = window['prefetchedData'];
+  private data: any = window['prefetchedData'].details;
   private modal: any = {title: 'Hi', message: 'Yo'};
   private configuration = require("json-loader!yaml-loader!./configuration.yaml");
   private sections = this.configuration.cards;
   private modals = this.configuration.modals;
+  private tooltips = this.configuration.tooltips;
 
   constructor() {
   }
