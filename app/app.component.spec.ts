@@ -10,6 +10,22 @@ import { AppComponent } from './app.component';
 import { AdamkeyModule } from 'adamkey';
 import { ModalComponent } from './components';
 
+window['prefetchedData'] = {
+  "key": "reports/open-procure-main-page",
+  "value": {
+    "details": {
+      "num_central": 14,
+      "num_exemptions": 17835,
+      "num_office": 1529,
+      "num_office_publishers": 79,
+      "total_amount": 40127080867.22,
+      "year": 2017
+    },
+    "doc_id": "reports/open-procure-main-page",
+    "key": "open-procure-main-page"
+  }
+};
+
 describe('AppComponent', function () {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
