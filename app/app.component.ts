@@ -105,7 +105,7 @@ export class AppComponent {
       href = 'https://next.obudget.org' + href;
       window.location.href = href;
     } else if (todo.indexOf('search') === 0) {
-      window.scrollTo({top: 0});
+      window.scrollTo({top: 0, behavior: 'smooth'});
     } else {
       let modal_id = todo.slice(6);
       let modal: any = this.modals[modal_id];
