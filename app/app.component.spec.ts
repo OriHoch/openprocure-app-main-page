@@ -1,14 +1,11 @@
 import 'karma-test-shim';
 
-import { By } from '@angular/platform-browser';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { BudgetKeyCommonModule } from 'budgetkey-ng2-components';
 import { AppComponent } from './app.component';
-import { AdamkeyModule } from 'adamkey';
-import { ModalComponent } from './components';
 
 window['prefetchedData'] = {
   "key": "reports/open-procure-main-page",
@@ -35,12 +32,10 @@ describe('AppComponent', function () {
       imports: [
         HttpModule,
         FormsModule,
-        AdamkeyModule,
         BudgetKeyCommonModule,
       ],
       declarations: [
         AppComponent,
-        ModalComponent,
       ],
       providers: [
       ]

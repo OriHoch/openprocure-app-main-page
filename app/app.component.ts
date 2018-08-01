@@ -1,11 +1,11 @@
-import {Component, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
-import { ModalComponent } from './components';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'my-app',
   template: ` 
       <budgetkey-container [showHeader]="true" [showSearchBar]="false">
         <div class='background-graphic'>
+          <div class='layer'></div>
           <div class='layer'></div>
           <div class='layer'></div>
           <div class='layer'></div>
@@ -73,9 +73,11 @@ import { ModalComponent } from './components';
         <div class="disclaimer">
         </div>
         <ng-container *ngIf='modal.visible'>
-          <modal [title]='modal.title' [text]='modal.text' 
+          <modal [title]='modal.title'
                  (close)='modal.visible = false'
-          ></modal>
+          >
+            <span [innerHtml]='modal.text'></span>
+          </modal>
         </ng-container>
       </budgetkey-container>
   `,

@@ -6,9 +6,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
-import { ModalComponent } from './components';
 
-import { AdamkeyModule } from 'adamkey';
 import { BudgetKeyCommonModule, THEME_TOKEN as NG_COMPONENTS_THEME_TOKEN } from 'budgetkey-ng2-components';
 
 
@@ -17,12 +15,10 @@ import { BudgetKeyCommonModule, THEME_TOKEN as NG_COMPONENTS_THEME_TOKEN } from 
     BrowserModule,
     HttpModule,
     FormsModule,
-    AdamkeyModule,
     BudgetKeyCommonModule,
   ],
   declarations: [
     AppComponent,
-    ModalComponent,
   ],
   providers: [
     {
