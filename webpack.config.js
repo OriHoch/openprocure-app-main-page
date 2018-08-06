@@ -36,15 +36,8 @@ module.exports = {
   module: {
     rules: [
       {
-        // These files will be evaluated on build-time and
-        // only their result will be used (see docs for `val-loader`)
-        test: /app\/services\/data\/bubbles\.ts$/,
-        use: ['val-loader', 'awesome-typescript-loader']
-      },
-      {
         test: /\.ts$/,
         // do not load files that will be processed by `val-loader`
-        exclude: /app\/services\/data\/bubbles\.ts$/,
         loader: 'awesome-typescript-loader'
       },
       {
@@ -55,6 +48,10 @@ module.exports = {
       },
       {
         test: /\.html$/,
+        loader: 'raw-loader'
+      },
+      {
+        test: /\.svg$/,
         loader: 'raw-loader'
       }
     ]

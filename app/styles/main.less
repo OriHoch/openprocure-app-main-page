@@ -1,134 +1,288 @@
-.site-nav {
-  // Hide default header
-  display: none;
-}
-
-@import './category-visualization.less';
-@import './header.less';
-@import './summary.less';
+@import url('https://fonts.googleapis.com/css?family=Miriam+Libre:700,400&subset=hebrew');
 
 // Override `budgetkey-ng2-components` style
-.app:not(root):after {
-  content: none;
-}
-
-.description {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  opacity: 1;
-  margin-top: 40px;
-  transition: opacity 150ms ease-out 0ms;
-
-  & > span {
-    max-width: 720px;
-    flex: 0 0 auto;
-    font-size: 24px;
-    color: #FF5A5F;
-    text-align: justify;
-  }
-}
-
-.course {
-  display: block;
+budgetkey-container { 
+  position: absolute;
   width: 100%;
-  background: #FF5A5F;
-  margin-top: 4em;
-  margin-bottom: 4em;
-  padding-top: 3em;
-  padding-bottom: 3em;
+}
 
-  .question {
-    font-size: 3em;
-    color: white;
+budgetkey-header {
+
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  header {
+    background-color: transparent;
+    border-color: transparent;
   }
 
-  .scroll-down{
-    flex: 0 0 auto;
-    margin: 30px 0 0 0;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  background: #FAFAFA;
+}
+
+.app {
+  margin-top: 0px;
+
+  .background-graphic {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+
+    .layer {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .layer:nth-child(1) {
+      background-color: #2389FF;	
+    }
+
+    .layer:nth-child(2) {
+      background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0.3) 100%); 
+    }
+
+    .layer:nth-child(3) {
+      background: linear-gradient(45deg, #2389FF 0%, rgba(59,0,74,0.86) 100%);  
+    }
+
+    .layer:nth-child(4) {
+      background-image: url(assets/img/hp-pattern.png);
+      opacity: 0.1;
+    }
+
+    .main-text {
+      padding-top: 100px;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      justify-content: flex-start;
+  
+      h1 {
+        width: 80%;
+        color: #fff;	
+        font-family: "Miriam Libre";	
+        font-size: 28px;	
+        font-weight: normal;
+        margin-bottom: 40px;
+        line-height: 37px;
+        text-align: center;
+      }
+  
+      budgetkey-search-bar {
+        width: 80%;
+      }
+  
+      input {
+        height: 45px;
+      }
+  
+      .search-guide {
+        display: flex;
+        flex-flow: row;
+  
+        img {
+          height: 45px;
+        }
+  
+        .search-examples {
+          color: #fff;	
+          font-family: "Abraham TRIAL";	
+          font-size: 18px;	
+          letter-spacing: 0.48px;	
+          line-height: 25px;
+          margin-top: 10px;
+          margin-right: 5px;
+  
+          .tags {
+            margin-top: 2px;
+            .tag {
+              border-radius: 5px;	
+              background-color: #f2effa;	
+              box-shadow: 0 2px 5px 0 rgba(0,0,0,0.05);
+              color: #4A4A4A;	
+              font-family: "Abraham TRIAL";	
+              font-size: 18px;
+              padding: 1px 2px;
+              margin: 1px;
+            }
+          }
+        }
+      }
+    }
+  
+  }
+
+  .tab-buttons {
+    width: 100%;
+    position: relative;
+    top: -256px;
+    margin-bottom: -256px;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-end;
+    
+    .tab-button-row {
+      display: flex;
+      flex-flow: row;
+      justify-content: center;  
 
-    svg {
-      display: block;
+      .tab-button {
 
-      path {
-        fill: white;
+        height: 120px;
+        width: 495px;
+        margin: 0px 15px 0px 15px;
+        
+        &.active {
+          background-color: #FAFAFA;
+  
+          .text {
+            color: #2389FF;
+            font-weight: bold;
+          }
+        }
+  
+        cursor: pointer;
+        border: 4px solid #FAFAFA;
+        border-bottom: none;
+        border-radius: 5px;
+        background-color: none;	
+  
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+  
+        .text {
+          color: #FFFFFF;	
+          font-family: "Miriam Libre";	
+          font-size: 28px;
+          text-align: center
+        }
+      }    
+  
+    }    
+  }
+
+  .tab-contents-container {
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 80px;
+
+    .card-row {
+
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      margin-bottom: 150px;
+
+      .card-row-header {
+        color: #000000;	
+        font-family: "Miriam Libre";	
+        font-size: 28px;	
+        font-weight: bold;
+      }
+
+      .card-row-cards {
+        display: flex;
+        flex-flow: row;
+        align-items: stretch;  
+        justify-content: center;
+
+        .card {
+          display: flex;
+          flex-flow: column;
+          align-items: center;
+          width: 300px;	
+          position: relative;
+          border: 2px solid #E7E7E7;	
+          border-radius: 20px;	
+          background-color: #FFFFFF;	
+          box-shadow: 0 2px 20px 0 rgba(139,170,207,0.2);
+          margin: 25px;
+          padding-bottom: 10px;
+
+          .card-icon {
+            margin-top: 40px;
+            height: 150px;
+            width: 150px;
+            position: relative;
+
+            img {
+              height: 100%;
+              position: absolute;
+              top: 0px;
+            }
+
+            img.internal {
+              height: 60%;
+              top: 20%;
+              margin-right: 30px;
+            }
+          }
+
+          .card-title {
+            width: 100%;
+            height: 120px;
+            border-bottom: 2px dashed #E7E7E7;
+            text-align: center;
+            padding: 20px;
+            color: #2389FF;	
+            font-family: "Miriam Libre";
+            font-size: 28px;
+            font-weight: bold;
+          }
+
+          .card-text {
+            color: #000000;	
+            font-family: "Abraham TRIAL";	
+            font-size: 22px;
+            line-height: 29px;
+            padding: 20px;
+            text-align: center;
+          }
+
+          .card-action {
+            height: 40px;
+            line-height: 37px;
+            width: 240px;
+            border: 2px solid #4A90E2;
+            border-radius: 30px;
+            background-color: #2389FF;
+            text-align: center;
+            color: #FFFFFF;
+            font-family: "Miriam Libre";
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+            bottom: -20px;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
-}
 
-.map-container {
-  width: 100%;
-  height: 500px;
-  margin: 80px 0 40px 0;
-}
-
-.sticky {
-
-  height: 10000px;
-  margin-bottom: 100vh;
-
-  .sticky-wrapper {
-    position: sticky;
-    top: 130px;
-    height: auto;
-
-    .text-center {
-      width: auto;
-      overflow-x: hidden;
-      white-space: nowrap;
-
-      .description, .chart {
-        display: inline-block;
-      }
-    }
-
-    .subtitles {
-      display: block;
-      min-height: 4em;
-      font-size: 1.5em;
-      color: #FF5A5F;
-    }
-
-    .chart {
-      direction: ltr;
-      display: inline-block;
-      width: 80vw;
-      height: 80vh;
-
-      .expenses {
-        stroke: lightblue;
-      }
-
-      .income {
-        stroke: skyblue;
-      }
-
-      .deficit {
-        stroke: violet;
-      }
-
-      .debt {
-        stroke: darkviolet;
-      }
-
-      .centerpiece-text {
-        fill: white;
-      }
-
-      .centerpiece {
-        fill: navyblue;
-      }
-    }
+  .disclaimer {
+    color: #B7B7B7;
+    font-family: "Miriam Libre";
+    font-size: 14px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding-left: 10%;
+    width: 100%;
+    text-align: left;
   }
-
-}
-
-.after {
-  height: 1000px;
-  border: beige solid 1px;
 }
